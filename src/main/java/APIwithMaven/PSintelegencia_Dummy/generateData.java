@@ -1,19 +1,23 @@
 package APIwithMaven.PSintelegencia_Dummy;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import com.opencsv.CSVWriter;
 
 public class generateData {
 
 	//This is method use to manage the data in excel format
 	//Apache POI is used for excel connection and handling.
 	
-	public static void Generate() throws IOException
+	public static void GenerateExcel() throws IOException
 	{
 		FileOutputStream fout = new FileOutputStream("TestData.xlsx");
 		XSSFWorkbook wb = new XSSFWorkbook();
@@ -48,6 +52,35 @@ public class generateData {
 		fout.flush();
 		
 		}
+	
+	
+	public static void GenerateCSV(){
+		File fi = new File("TestData.csv");
+		
+		try {
+			FileWriter Filewriter = new FileWriter(fi);
+			CSVWriter CSVwriter = new CSVWriter(Filewriter);
+			
+			//Adding header to csv
+			
+			String[] header = {"Patientid","Date of Birth","PersonalIdentifier","admit date"};
+			CSVwriter.writeNext(header);
+			
+			for (int i =1 ;i<=10;i++)
+			{
+				String [] row_data =  {inputValues.PID(),inputValues.GenerateDOB(),inputValues.PIGenerator(),inputValues.AdmitDate()};
+				CSVwriter.writeNext(row_data);
+			}
+			
+			CSVwriter.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+	}
 
 		
 	}

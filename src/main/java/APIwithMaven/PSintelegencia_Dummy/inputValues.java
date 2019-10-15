@@ -16,12 +16,12 @@ public class inputValues {
 		return randomint;
 	}
 	
-	//Method to generate the Admit date based on the current date and adding any day till 99 days in future
+	//Method to generate the Admit date based on the current date and subtracting any day until 99 days in past.
 		public static String AdmitDate()
 		{
 		SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
 		Calendar cal = Calendar.getInstance();
-		cal.add(Calendar.DAY_OF_MONTH, RandomNumberGen());
+		cal.add(Calendar.DAY_OF_MONTH, -RandomNumberGen());
 		String New_date = dateformat.format(cal.getTime());
 		//System.out.println(New_date);
 		return New_date;
@@ -42,7 +42,7 @@ public class inputValues {
 	//Method to generate PI of length 10
 		public static String PIGenerator()
 		{
-		String S = RandomStringUtils.randomAlphabetic(10).toLowerCase();
+		String S = RandomStringUtils.randomAlphabetic(10).toUpperCase();
 		//System.out.println(S);
 		return S;
 		}
@@ -52,10 +52,10 @@ public class inputValues {
 			SimpleDateFormat dateformat = new SimpleDateFormat("yyyyMMddhhmmss");
 			Calendar cal = Calendar.getInstance();
 			String S3 = dateformat.format(cal.getTime());
-			String S2 = RandomStringUtils.randomAlphanumeric(20).toLowerCase();
+			String S2 = RandomStringUtils.randomAlphanumeric(9).toUpperCase();
 			String S1 = "PID000";
 			
-			String PID = S1+S2+S3;
+			String PID = S1+S3+S2;
 			
 			return PID;
 		}

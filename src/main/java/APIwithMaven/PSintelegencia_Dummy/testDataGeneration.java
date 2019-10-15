@@ -1,6 +1,5 @@
 package APIwithMaven.PSintelegencia_Dummy;
 
-import java.io.IOException;
 
 public class testDataGeneration {
 
@@ -10,15 +9,11 @@ public class testDataGeneration {
 		
 		System.out.println("This program is generating the set of dummy test data.");
 		
-		try {
-			generateData.Generate();
-			System.out.println("Data generation successfull.");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		generateData.GenerateCSV();
+		System.out.println("Data generation successfull.");
 		
 		
-		System.out.println("Refresh the project in eclipse and the output will be generate with Testdata.xlsx name");
+		System.out.println("Refresh the project in eclipse and the output will be generate with Testdata.csv name");
 		
 		
 	
