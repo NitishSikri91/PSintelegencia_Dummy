@@ -61,11 +61,13 @@ public class generateData {
 			FileWriter Filewriter = new FileWriter(fi);
 			CSVWriter CSVwriter = new CSVWriter(Filewriter);
 			
-			//Adding header to csv
+			//Adding header to csv file
 			
 			String[] header = {"Patientid","Date of Birth","PersonalIdentifier","admit date"};
 			CSVwriter.writeNext(header);
 			
+			
+			//Loop to generate the row data for 10 records 
 			for (int i =1 ;i<=10;i++)
 			{
 				String [] row_data =  {inputValues.PID(),inputValues.GenerateDOB(),inputValues.PIGenerator(),inputValues.AdmitDate()};
